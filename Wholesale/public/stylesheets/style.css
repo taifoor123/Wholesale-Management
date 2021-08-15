@@ -1,0 +1,22 @@
+nav {
+  margin-bottom: 50px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.card
+{
+  width: 250px;
+  
+  margin: 1.66%;
+  float: left;
+}
+
+.container
+{
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+}

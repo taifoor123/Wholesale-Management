@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+</head>
+
+<body class="bod">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="..">Wholesale DB</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="..">Home</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="../product">Products</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="../manufacturer">Manufacturers</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="../retailer">Retailers</a>
+        </li>
+
+
+
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Product Inventory</h1>
+    <h2>Add Product to Inventory</h2>
+    <form action="/product_add" method="POST">
+      <% if (success.add) { %>
+      <div class="alert alert-success" role="alert">
+        <%=success.prod %> was successfully added to inventory list!
+        <br>Add another one, view the list below or update or delete an item.
+      </div>
+      <% } %>
+    
+      
+      <div class="form-group">
+        <label for="exampleInputEmail1">Product Name</label>
+        <input type="text" class="form-control" placeholder="Enter Product" name="pname" required>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Buying Price</label>
+        <input type="number" class="form-control" placeholder="Enter Buying Price" name="buying_price" required>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Selling Price</label>
+        <input type="number" class="form-control" placeholder="Enter Selling Price" name="selling_price" required>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Quantity</label>
+        <input type="number" class="form-control" placeholder="Enter Quantity" name="quantity" required>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Category</label>
+        <input type="text" class="form-control" placeholder="Enter Category" name="category" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Add Product to Database</button>
+    </form>
+    <hr />
+    <h2>Current Products in Inventory</h2>
+  <hr>
+
+
+  <%if (data.length>0) { %>
+  <%for(let product of data){%>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><%=product.pname%></h5>
+      <p class="card-text"><strong>Buying price:</strong> <%=product.buying_price%>
+        <br> <strong>Selling Price:</strong> <%=product.selling_price%>
+        <br><strong>Quantity in Stock:</strong> <%=product.quantity%></p>
+      </p>
+      <form action="/product_update" method="GET">
+        <button type="submit" name="id" value="<%=product.product_id%>" class="btn btn-primary">Update</button>
+      </form>
+      <br>
+      <form action="/product_delete" method="POST">
+        <button type="submit" name="id" value="<%=product.product_id%>" class="btn btn-danger">Delete</button>
+      </form>
+      <br>
+      <form action="/product_buy" method="GET">
+        <button type="submit" name="id" value="<%=product.product_id%>" class="btn btn-info">Details</button>
+      </form>
+    </div>
+  </div>
+
+  <%}%>
+    
+      <%} else {%>
+  <p>No products found</p>
+  <%}%>
+  </div>
+</body>
+
+</html>

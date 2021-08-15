@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+</head>
+
+<body class="bod">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="..">Wholesale DB</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="..">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../product">Products</a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="../manufacturer">Manufacturers</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="../retailer">Retailers</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="../payment">Payments</a>
+            </li>
+
+          </ul>
+
+
+          
+        </div>
+      </nav>
+
+
+  <div class="container">
+    <h1>Retailers List</h1>
+    <h2>Add Retailer to List</h2>
+    <form action="/retailer_update" method="POST">
+
+      <div class="form-group">
+      <input type="hidden" id="retailer_id" name="retailer_id" value="<%=main.retailer_id%>">
+        <label for="exampleInputEmail1">Retailer Name</label>
+        <input type="text" class="form-control" placeholder="Enter Retailer Name" name="rname" value="<%=main.rname%>"required>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Balance</label>
+        <input type="text" class="form-control" placeholder="Enter Balance" name="balance" value="<%=main.balance%>"required>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Phone Number</label>
+        <input type="number" class="form-control" placeholder="Enter Phone Number" name="phone_no" value="<%=main.phone_no%>" required>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Category</label>
+        <input type="text" class="form-control" placeholder="Enter Category" name="category" value="<%=main.category%>"required>
+      </div>
+      <button type="submit" class="btn btn-primary">Add Retailer to Database</button>
+    </form>
+    </div>
+    </body>
+    </html>
